@@ -1,7 +1,9 @@
-#include "LZespolona.hh"
+#include "../inc/BazaTestu.hh"
 #include <cmath>
 
 #define MIN_DIFF 0.00001
+
+using namespace std;
 
 /*!
  * Realizuje porównanie dwoch liczb zespolonych.
@@ -43,6 +45,40 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
 }
 
 
+LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
+{
+  LZespolona  Wynik;
+
+  Wynik.re = Skl1.re - Skl2.re;
+  Wynik.im = Skl1.im - Skl2.im;
+  return Wynik;
+}
+
+LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
+{
+  LZespolona  Wynik;
+
+  Wynik.re = Skl1.re*Skl2.re - Skl2.im*Skl1.im;
+  Wynik.im = Skl1.re*Skl2.im + Skl2.re*Skl1.im;
+  return Wynik;
+}
+
+LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
+{
+  LZespolona  Wynik;
+
+  Wynik.re = (Skl1.re*Skl2.re + Skl2.im*Skl1.im)/(Skl2.re*Skl2.re + Skl2.im*Skl2.im);
+  Wynik.im = (Skl1.re*Skl2.im + Skl2.im*Skl1.re)/(Skl2.re*Skl2.re + Skl2.im*Skl2.im);
+  
+  return Wynik;
+}
+
+
+
+
+
+
+
 /*!
  * Realizuje dzielenie liczby zespolonej przez skakar.
  * Argumenty:
@@ -50,7 +86,7 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
  *    Skl2 - skalar-dzielnik.
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
- */
+ *
 LZespolona  operator / (LZespolona  Skl1,  double  Skl2){
   LZespolona  Wynik;
 
@@ -58,3 +94,4 @@ LZespolona  operator / (LZespolona  Skl1,  double  Skl2){
   Wynik.im = Skl1.im / Skl2;
   return Wynik;
 }
+*/

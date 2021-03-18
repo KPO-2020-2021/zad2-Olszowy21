@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cstring>
 #include <cassert>
-#include "BazaTestu.hh"
+#include "../inc/BazaTestu.hh"
+
 
 using namespace std;
 
@@ -9,7 +10,7 @@ using namespace std;
  * Tablica, ktora jest widoczna tylko w tym module.
  * Zawiera ona tresc latwego testu.
  */
-static WyrazenieZesp  TestLatwy[] =
+static WyrazenieZesp TestLatwy[] =
   { {{2,1}, Op_Dodaj, {1,2}},
     {{1,0}, Op_Odejmij, {0,1}},
     {{3,0}, Op_Mnoz, {0,3}},

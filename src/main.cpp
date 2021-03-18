@@ -1,5 +1,7 @@
 #include <iostream>
 #include "BazaTestu.hh"
+#include "WyrazenieZesp.hh"
+
 
 using namespace std;
 
