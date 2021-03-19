@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../inc/BazaTestu.hh"
 
 using namespace std;
@@ -8,5 +9,12 @@ using namespace std;
  */
 
 
-void Wyswietl(WyrazenieZesp  WyrZ);
-LZespolona Oblicz(WyrazenieZesp  WyrZ);
+void Wyswietl(WyrazenieZesp  WyrZ){
+    
+    cout << " Wyrażenie zespolone wynosi " << WyrZ << endl;
+
+
+
+
+}
+LZespolona Oblicz(WyrazenieZesp  WyrZ)
