@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <cassert>
-#include "../inc/BazaTestu.hh"
+#include "BazaTestu.hh"
 
 
 using namespace std;
@@ -21,6 +21,13 @@ static WyrazenieZesp TestLatwy[] =
  * Analogicznie zdefiniuj test "trudne"
  *
  */
+
+static WyrazenieZesp TestTrudny[] =
+  { {{2,1}, Op_Dodaj, {1,2}},
+    {{1,0}, Op_Odejmij, {0,1}},
+    {{3,0}, Op_Mnoz, {0,3}},
+    {{4,8}, Op_Dziel, {1,0}},
+  };
 
 
 

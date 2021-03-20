@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 
   BazaTestu   BazaT = { nullptr, 0, 0 };
 
-  if (InicjalizujTest(&BazaT,argv[1]) == false) {
+  if (InicjalizujTest(&BazaT, argv[1]) == false) {
     cerr << " Inicjalizacja testu nie powiodla sie." << endl;
     return 1;
   }

@@ -1,10 +1,9 @@
-#include "../inc/BazaTestu.hh"
-#include <cmath>
+#include "BazaTestu.hh"
+
 
 #define MIN_DIFF 0.00001
 
 using namespace std;
-
 /*!
  * Realizuje porównanie dwoch liczb zespolonych.
  * Argumenty:
@@ -15,7 +14,7 @@ using namespace std;
  */
 
 bool  operator == (LZespolona  Skl1,  LZespolona  Skl2){
-  if ((Skl1.re == Skl2.re) && (Skl1.im == Skl2.im))
+  if (((Skl1.re - Skl2.re) <= MIN_DIFF) && ((Skl1.im - Skl2.im) <= MIN_DIFF))
     return true;
   else
     return false;
@@ -73,6 +72,14 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
   return Wynik;
 }
 
+ostream& operator << (ostream& STRwyj, LZespolona& LZ)
+{
+  STRwyj << "(" << LZ.re << showpos << LZ.im << "i)" << noshowpos;
+  return STRwyj;
+}
+
+istream& operator >> (istream& STRwej, LZespolona& LZ);
+
 
 
 
@@ -80,7 +87,7 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
 
 
 /*!
- * Realizuje dzielenie liczby zespolonej przez skakar.
+ * Realizuje dzielenie liczby zespolonej przez skalar.
  * Argumenty:
  *    Skl1 - dzielona liczba zespolona,
  *    Skl2 - skalar-dzielnik.

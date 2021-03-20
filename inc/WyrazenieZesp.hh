@@ -23,5 +23,7 @@ struct WyrazenieZesp {
 */
 void Wyswietl(WyrazenieZesp  WyrZ);
 LZespolona Oblicz(WyrazenieZesp  WyrZ);
+LZespolona Wczytaj(WyrazenieZesp  WyrZ);
+
 
 #endif
