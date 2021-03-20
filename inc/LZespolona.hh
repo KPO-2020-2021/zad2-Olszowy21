@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <iostream>
+
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
  *  przeciazen operatorow arytmetycznych dzialajacych na tej 
@@ -23,19 +24,21 @@ struct  LZespolona {
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
  */
 
-bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);
+bool  operator== (LZespolona  Skl1,  LZespolona  Skl2);
 
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona  operator+ (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona  operator- (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona  operator/ (LZespolona  Skl1,  double  Skl2);
+LZespolona  operator* (LZespolona  Skl1,  LZespolona  Skl2);
 
-std::ostream& operator << (std::ostream&, LZespolona& );
-std::istream& operator >> (std::istream&, LZespolona& );
+std::ostream& operator<< (std::ostream&, LZespolona& );
+std::istream& operator>> (std::istream&, LZespolona& );
 
 LZespolona sprzezenie(LZespolona  Skl1);
+
 void wczytajLZ(LZespolona  Skl1);
-void modul(LZespolona Skl1);
+double modul(LZespolona Skl1);
+void Sprawdzznak(std::istream &STRwej, char znak);
 
 
 
