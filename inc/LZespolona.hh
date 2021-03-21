@@ -4,7 +4,6 @@
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
-#include "Statystyki.hh"
 
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi

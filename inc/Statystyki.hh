@@ -1,18 +1,13 @@
 #ifndef WYRAZENIEZESP_HH
 #define WYRAZENIEZESP_HH
 
-using namespace std;
-
-#include "BazaTestu.hh"
-
-struct Zliczanie {
-  int Poprawne;
-  int Niepoprawne;
-};
+#include "WyrazenieZesp.hh"
 
 /*
  * Tu nalezy zdefiniowac funkcje, ktore definiuja model statystyki 
  */
+
+
 void Wyniktestu(Zliczanie Pkt);
 
 #endif

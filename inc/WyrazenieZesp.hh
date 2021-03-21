@@ -10,21 +10,28 @@
 enum Operator { Op_Dodaj, Op_Odejmij, Op_Mnoz, Op_Dziel };
 
 /*
-* Modeluje pojecie dwuargumentowego wyrazenia zespolonego
-*/
+ * Modeluje pojecie dwuargumentowego wyrazenia zespolonego
+ */
+
 struct WyrazenieZesp {
   LZespolona   Arg1;   // Pierwszy argument wyrazenia arytmetycznego
   Operator     Op;     // Opertor wyrazenia arytmetycznego
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
 };
+
+struct Zliczanie {
+  int Poprawne;
+  int Niepoprawne;
+};
+
 /*
 * Funkcje ponizej nalezy zdefiniowac w module.
 *
 */
 void Wyswietl(WyrazenieZesp  WyrZ);
-LZespolona Oblicz(WyrazenieZesp  WyrZ);
-LZespolona WczytajWZ(WyrazenieZesp  WyrZ);
+WyrazenieZesp Oblicz(WyrazenieZesp  WyrZ);
+WyrazenieZesp WczytajWZ(WyrazenieZesp  WyrZ);
 void Sprawdzoperator(WyrazenieZesp  WyrZ, Operator xD );
-
+std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WZ );
 
 #endif
