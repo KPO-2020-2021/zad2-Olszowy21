@@ -16,6 +16,10 @@ struct BazaTestu {
   unsigned int    IndeksPytania; /* Numer pytania, ktore ma byc pobrane jako nastepne */
 };
 
+struct Zliczanie {
+  int Poprawne;
+  int Niepoprawne;
+};
 
 /*
  * Inicjalizuje test powiazany z dana nazwa.

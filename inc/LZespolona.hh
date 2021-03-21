@@ -3,6 +3,8 @@
 
 #include <cmath>
 #include <iostream>
+#include <cstdlib>
+#include "Statystyki.hh"
 
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
@@ -24,15 +26,15 @@ struct  LZespolona {
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
  */
 
-bool  operator== (LZespolona  Skl1,  LZespolona  Skl2);
+bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);
 
-LZespolona  operator+ (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator- (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator/ (LZespolona  Skl1,  double  Skl2);
-LZespolona  operator* (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
+LZespolona  operator / (LZespolona  Skl1,  double  Skl2);
+LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
 
-std::ostream& operator<< (std::ostream&, LZespolona& );
-std::istream& operator>> (std::istream&, LZespolona& );
+std::ostream& operator << (std::ostream&, LZespolona& );
+std::istream& operator >> (std::istream&, LZespolona& );
 
 LZespolona sprzezenie(LZespolona  Skl1);
 
