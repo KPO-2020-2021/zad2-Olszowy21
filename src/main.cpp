@@ -1,7 +1,6 @@
 #include <iostream>
 #include "BazaTestu.hh"
-#include "WyrazenieZesp.hh"
-
+#include "Statystyki.hh"
 
 using namespace std;
 
@@ -20,7 +19,7 @@ int main(int argc, char **argv)
   }
 
 
-  BazaTestu   BazaT = { nullptr, 0, 0 };
+  BazaTestu BazaT = { nullptr , 0, 0 };
 
   if (InicjalizujTest(&BazaT, argv[1]) == false) {
     cerr << " Inicjalizacja testu nie powiodla sie." << endl;
@@ -34,13 +33,19 @@ int main(int argc, char **argv)
   cout << endl;
 
   WyrazenieZesp   WyrZ_PytanieTestowe;
+  LZespolona TYMCZ;
+  Zliczanie Liczydelko;
   
+  Liczydelko.Niepoprawne = 0;
+  Liczydelko.Poprawne = 0;
+
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
     cout << " Czesc rzeczywista pierwszego argumentu: ";
     cout << WyrZ_PytanieTestowe.Arg1.re << endl;
   }
 
-  
+  void Wyniktestu();
+
   cout << endl;
   cout << " Koniec testu" << endl;
   cout << endl;

@@ -1,6 +1,7 @@
 #include "Statystyki.hh"
+#include "LZespolona.hh"
 
-
+using namespace std;
 /*
  * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
  * w pliku naglowkowym.

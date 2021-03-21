@@ -1,14 +1,26 @@
 #include <iostream>
 #include "BazaTestu.hh"
+#include "LZespolona.hh"
 
 using namespace std;
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
- * w pliku naglowkowym.
+/*!
+ * Funkcja:
+ * Będzie sprawdzała zgodność operatorów
+ * 
  */
 
+void Sprawdzoperator(WyrazenieZesp  WyrZ, Operator xD )
+{
+  
+}
 
+
+/*!
+ * Funkcja:
+ * Wyświetla Wyrażenie algebraiczne.
+ *
+ */
 void Wyswietl(WyrazenieZesp  WyrZ){
     
     cout << WyrZ.Arg1 << WyrZ.Op << WyrZ.Arg2;
@@ -17,3 +29,11 @@ void Wyswietl(WyrazenieZesp  WyrZ){
 
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ);
+
+
+LZespolona WczytajWZ(WyrazenieZesp  WyrZ){
+    cout << "Podaj wyrażenie algebraiczne w postaci (2 + 3i)" << endl;
+    
+
+
+}
