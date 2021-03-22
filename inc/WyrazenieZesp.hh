@@ -6,12 +6,19 @@
 
 /*!
  * Modeluje zbior operatorow arytmetycznych.
- */
-enum Operator { Op_Dodaj, Op_Odejmij, Op_Mnoz, Op_Dziel };
-
-/*
+ *
+ *    enum Operator { Op_Dodaj = 1, Op_Odejmij, Op_Mnoz, Op_Dziel };
+ *
+ *
  * Modeluje pojecie dwuargumentowego wyrazenia zespolonego
  */
+
+enum Operatoro { Op_Dodaj, Op_Odejmij, Op_Mnoz, Op_Dziel };
+
+struct Operator {
+  char Opera;
+};
+
 
 struct WyrazenieZesp {
   LZespolona   Arg1;   // Pierwszy argument wyrazenia arytmetycznego
@@ -19,19 +26,17 @@ struct WyrazenieZesp {
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
 };
 
-struct Zliczanie {
-  int Poprawne;
-  int Niepoprawne;
-};
 
 /*
 * Funkcje ponizej nalezy zdefiniowac w module.
 *
-*/
+*/    
 void Wyswietl(WyrazenieZesp  WyrZ);
 WyrazenieZesp Oblicz(WyrazenieZesp  WyrZ);
 WyrazenieZesp WczytajWZ(WyrazenieZesp  WyrZ);
-void Sprawdzoperator(WyrazenieZesp  WyrZ, Operator xD );
+void Sprawdzoperator(std::istream &STRwej);
 std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WZ );
+std::ostream& operator << (std::ostream& STRwyj, WyrazenieZesp& WyrZ);
+std::istream& operator >> (std::istream& STRwej, Operator& Operarator );
 
 #endif

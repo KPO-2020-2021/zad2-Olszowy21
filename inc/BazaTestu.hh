@@ -2,13 +2,14 @@
 #define BAZATESTU_HH
 
 #include "WyrazenieZesp.hh"
-
 /*
  * Modeluje pojecie baze testu z zestawem pytan w tablicy
  * oraz informacji o maksymalnej ilosci pytan, jak
  * tez indeksem nastepnego pytania, ktore ma byc pobrane
  * z bazy.
+ * 
  */
+
 struct BazaTestu {
   WyrazenieZesp  *wskTabTestu;   /* Wskaznik na tablice zawierajaca pytania testu */
   unsigned int    IloscPytan;    /* Ilosc wszystkich pytan */

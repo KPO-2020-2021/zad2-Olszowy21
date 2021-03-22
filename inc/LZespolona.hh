@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
@@ -40,7 +41,6 @@ LZespolona sprzezenie(LZespolona  Skl1);
 void wczytajLZ(LZespolona  Skl1);
 double modul(LZespolona Skl1);
 void Sprawdzznak(std::istream &STRwej, char znak);
-
 
 
 

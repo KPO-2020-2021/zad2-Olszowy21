@@ -1,13 +1,13 @@
-#ifndef WYRAZENIEZESP_HH
-#define WYRAZENIEZESP_HH
+#ifndef STATYSTYKI_HH
+#define STATYSTYKI_HH
 
 #include "WyrazenieZesp.hh"
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktore definiuja model statystyki 
- */
+struct Naliczanie {
+  int Poprawne;
+  int Niepoprawne;
+};
 
-
-void Wyniktestu(Zliczanie Pkt);
+void Wynikitestu(Naliczanie Pkt);
 
 #endif
