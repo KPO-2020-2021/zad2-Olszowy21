@@ -1,5 +1,4 @@
-#include "BazaTestu.hh"
-
+#include "LZespolona.hh"
 
 #define MIN_DIFF 0.001
 
@@ -31,7 +30,7 @@ bool  operator == (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator+ (LZespolona  Skl1,  LZespolona  Skl2){
+LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
   LZespolona  Wynik;
 
   Wynik.re = Skl1.re + Skl2.re;
@@ -47,7 +46,7 @@ LZespolona  operator+ (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Różnice dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator- (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
@@ -64,7 +63,7 @@ LZespolona  operator- (LZespolona  Skl1,  LZespolona  Skl2)
  * Zwraca:
  *    Przemnożone dwa skladniki przekazane jako parametry.
  */
-LZespolona  operator* (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
@@ -81,7 +80,7 @@ LZespolona  operator* (LZespolona  Skl1,  LZespolona  Skl2)
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  *
  */
-LZespolona  operator/ (LZespolona  Skl1,  double  Skl2)
+LZespolona  operator / (LZespolona  Skl1,  double  Skl2)
 {
   LZespolona  Wynik;
   if(Skl2 == 0){
@@ -97,8 +96,9 @@ LZespolona  operator/ (LZespolona  Skl1,  double  Skl2)
  * Wyświetla Liczbę zespoloną na wyjściu.
  *
  */
-ostream& operator<< (ostream &STRwyj, LZespolona &LZ)
+ostream& operator << (ostream &STRwyj, LZespolona &LZ)
 {
+  cout << "WESZŁO W wyswietlanie WYRZESP";
   STRwyj << "(" << LZ.re << showpos << LZ.im << "i)" << noshowpos;
   return STRwyj;
 }
@@ -116,8 +116,9 @@ void Sprawdzznak(istream &STRwej, char znak){
  * wczytuje liczbę zespoloną z wejścia, oraz sprawdza poprawność składni.
  *
  */
-istream& operator >> (std::istream& STRwej, LZespolona& LZ )
+istream& operator >> (istream& STRwej, LZespolona& LZ )
 {
+  std::cout << "WESZŁO W wczytywanie dla LI ZESPOLONEJ" << endl;
   Sprawdzznak(STRwej, '(');
   STRwej >> LZ.re;
   STRwej >> LZ.im;
@@ -136,7 +137,11 @@ LZespolona sprzezenie(LZespolona  Skl1)
   Skl1.im = -(Skl1.im);
   return Skl1;
 }
-
+/*!
+ * Funkcja Realizuje moduł ze składowej jaką mu zadamy.
+ * 
+ *
+ */
 double modul(LZespolona Skl1){
   double Wynik;
 

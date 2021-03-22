@@ -1,16 +1,17 @@
-#include "Statystyki.hh"
 #include "LZespolona.hh"
+#include "WyrazenieZesp.hh"
+#include "Statystyki.hh"
 
-using namespace std;
 /*
  * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
  * w pliku naglowkowym.
  */
-void Wyniktestu(Zliczanie Pkt)
+
+void Wynikitestu(Naliczanie Pkt)
 {
     double Wynik;
     Wynik = ((double)Pkt.Poprawne / ((double)Pkt.Poprawne + (double)Pkt.Niepoprawne)) * 100;
-    cout << "Procentowa poprawność odpowiedzi: " << Wynik << "%" << endl;
-    cout << "Dobre odpowiedzi: " << Pkt.Poprawne << endl;
-    cout << "Złe odpowiedzi: " << Pkt.Niepoprawne << endl;
+    std::cout << "Procentowa poprawność odpowiedzi: " << Wynik << "%" << std::endl;
+    std::cout << "Dobre odpowiedzi: " << Pkt.Poprawne << std::endl;
+    std::cout << "Złe odpowiedzi: " << Pkt.Niepoprawne << std::endl;
 }
