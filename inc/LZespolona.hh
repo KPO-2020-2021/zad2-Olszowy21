@@ -31,6 +31,7 @@ bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator / (LZespolona  Skl1,  double  Skl2);
+LZespolona  operator / (LZespolona  Skl1,  LZespolona Skl2);
 LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
 
 std::ostream& operator << (std::ostream&, LZespolona& );

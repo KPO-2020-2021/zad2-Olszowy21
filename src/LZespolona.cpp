@@ -1,6 +1,6 @@
 #include "LZespolona.hh"
 
-#define MIN_DIFF 0.001
+#define MIN_DIFF 0.0001
 
 using namespace std;
 /*!
@@ -83,14 +83,29 @@ LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
 LZespolona  operator / (LZespolona  Skl1,  double  Skl2)
 {
   LZespolona  Wynik;
-  if(Skl2 == 0){
-    cerr << "Dzielenie przez 0 proszę zmienić składową" << endl;
-    exit(-1);
+  if(Skl2 != 0){
+    Wynik.re = Skl1.re / Skl2;
+    Wynik.im = Skl1.im / Skl2;
   }
-  Wynik.re = Skl1.re / Skl2;
-  Wynik.im = Skl1.im / Skl2;
+  cerr << "Dzielenie przez 0 proszę zmienić składową" << endl;
   return Wynik;
 }
+
+LZespolona  operator / (LZespolona  Skl1,  LZespolona Skl2)
+{
+  LZespolona  Wynik;
+  if (Skl2.re == 0 || Skl2.im == 0)
+{
+   cerr << "Dzielenie przez 0 proszę zmienić składową" << endl;
+}
+  Wynik = operator * (Skl1, sprzezenie(Skl2));
+  Wynik.re = Wynik.re/pow(modul(Skl2), 2);
+  Wynik.im = Wynik.im/pow(modul(Skl2), 2);
+  return Wynik;
+}
+
+
+
 /*!
  * Realizuje przeciążenie operatora wyjścia.
  * Wyświetla Liczbę zespoloną na wyjściu.

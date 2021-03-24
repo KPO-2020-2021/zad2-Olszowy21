@@ -13,11 +13,7 @@
  * Modeluje pojecie dwuargumentowego wyrazenia zespolonego
  */
 
-enum Operatoro { Op_Dodaj, Op_Odejmij, Op_Mnoz, Op_Dziel };
-
-struct Operator {
-  char Opera;
-};
+enum Operator { Op_Dodaj, Op_Odejmij, Op_Mnoz, Op_Dziel };
 
 
 struct WyrazenieZesp {
@@ -37,6 +33,6 @@ WyrazenieZesp WczytajWZ(WyrazenieZesp  WyrZ);
 void Sprawdzoperator(std::istream &STRwej);
 std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WZ );
 std::ostream& operator << (std::ostream& STRwyj, WyrazenieZesp& WyrZ);
-std::istream& operator >> (std::istream& STRwej, Operator& Operarator );
+std::istream& operator >> (std::istream& STRwej, const Operator& Operarator );
 
 #endif

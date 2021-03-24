@@ -30,15 +30,40 @@ std::ostream& operator << (std::ostream& STRwyj, WyrazenieZesp& WyrZ)
     return STRwyj;
 }
 
-std::ostream& operator << (std::ostream& STRwyj, Operator& Oper)
+std::ostream& operator << (std::ostream& STRwyj, const Operator& Oper)
 {
-    STRwyj << Oper.Opera;
-    return STRwyj;
+    switch(Oper)
+    {
+        case Op_Dodaj:
+        STRwyj << '+';
+        break;
+        case Op_Odejmij:
+        STRwyj << '-';
+        break;
+        case Op_Mnoz:
+        STRwyj << '*';
+        break;
+        case Op_Dziel:
+        STRwyj << '/';
+        break;
+        default:
+        STRwyj << "Błędny operator poprawne to + , - , * , /";
+        break;
+    }
+    return (STRwyj);
+}
+
+void Sprawdzoperator(std::istream &STRwej){
+    char ops1;
+    STRwej >> ops1;
+    if (ops1 != ('+'||'-'||'*'||'/')){
+        STRwej.setstate(std::ios::failbit);
+    }
 }
 
 std::istream& operator >> (std::istream& STRwej, Operator& Oper ){
     Sprawdzoperator(STRwej);
-    STRwej >> Oper.Opera;
+    STRwej >> Oper;
     return(STRwej);
 }
 
@@ -66,10 +91,3 @@ void Wyswietl(WyrazenieZesp  WyrZ){
     std::cout << WyrZ.Arg2;
 }
 
-void Sprawdzoperator(std::istream &STRwej){
-    char ops1;
-    STRwej >> ops1;
-    if (ops1 != ('+'||'-'||'*'||'/')){
-        STRwej.setstate(std::ios::failbit);
-    }
-}
