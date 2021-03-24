@@ -22,9 +22,9 @@ TEST_CASE("Test LZespolona dzielenie przez skalar 2") {
     x.re = 2;
     x.im = 2;
 
-    y.re = 1;
-    y.im = 1;
-   
+    y.re = 0.6667;
+    y.im = 0.6667;
+
     CHECK(x/t == y);
 }
 
@@ -36,5 +36,20 @@ TEST_CASE("Test LZespolona dzielenie przez skalar - zero") {
     x.im = 2;
  
    WARN_THROWS(x/t);
+}
+
+TEST_CASE("Test LZespolona dzielenie przez liczbę zespoloną") {
+    LZespolona x, y, z;
+    
+    x.re = 9;
+    x.im = 9;
+
+    y.re = 4.5;
+    y.im = 4.5;
+
+    z.re = 2;
+    z.im = 2;
+
+    CHECK(x/y==z);
 }
 
