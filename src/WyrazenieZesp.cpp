@@ -16,9 +16,6 @@
  
  */
 
-
-WyrazenieZesp Oblicz(WyrazenieZesp  WyrZ);
-
 /*!
  * Realizuje przeciążenie operatora wejścia.
  * wczytuje liczbę zespoloną z wejścia, oraz sprawdza poprawność składni.
@@ -53,7 +50,7 @@ std::ostream& operator << (std::ostream& STRwyj, const Operator& Oper)
     return (STRwyj);
 }
 
-void Sprawdzoperator(std::istream &STRwej){
+void WyrazenieZesp::Sprawdzoperator(std::istream &STRwej){
     char ops1;
     STRwej >> ops1;
     if (ops1 != ('+'||'-'||'*'||'/')){
@@ -62,7 +59,7 @@ void Sprawdzoperator(std::istream &STRwej){
 }
 
 std::istream& operator >> (std::istream& STRwej, Operator& Oper ){
-    Sprawdzoperator(STRwej);
+    Oper.Sprawdzoperator(STRwej);
     STRwej >> Oper;
     return(STRwej);
 }
@@ -76,18 +73,18 @@ std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WyrZ ){
     return(STRwej);
 }
 
-WyrazenieZesp WczytajWZ(WyrazenieZesp  WyrZ){
+WyrazenieZesp WyrazenieZesp::WczytajWZ(){
     std::cout << std::endl;
-    std::cin >> WyrZ.Arg1;
-    std::cin >> WyrZ.Op;
-    std::cin >> WyrZ.Arg2;
-    return (WyrZ);
+    std::cin >> Arg1;
+    std::cin >> Op;
+    std::cin >> Arg2;
+    return (*this);
 }
 
-void Wyswietl(WyrazenieZesp  WyrZ){
+void WyrazenieZesp::Wyswietl(){
     
-    std::cout << WyrZ.Arg1;
-    std::cout << WyrZ.Op;
-    std::cout << WyrZ.Arg2;
+    std::cout << Arg1;
+    std::cout << Op;
+    std::cout << Arg2;
 }
 

@@ -14,13 +14,13 @@ using namespace std;
  * UWAGA! przy wpisywaniu wyniku należy uwzględniać 3 miejsca po przecinku!!!
  */
 
-bool  operator == (LZespolona  Skl1,  LZespolona  Skl2){
-  if ((abs(Skl1.re - Skl2.re) <= MIN_DIFF) && (abs(Skl1.im - Skl2.im) <= MIN_DIFF))
+bool  LZespolona::operator == (LZespolona  Skl2){
+  if ((abs(re - Skl2.re) <= MIN_DIFF) && (abs(im - Skl2.im) <= MIN_DIFF))
     return true;
   else
 
     return false;
-}
+} 
 
 /*!
  * Realizuje dodanie dwoch liczb zespolonych.
@@ -30,11 +30,11 @@ bool  operator == (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
+LZespolona  LZespolona::operator + (LZespolona  Skl2){
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re + Skl2.re;
-  Wynik.im = Skl1.im + Skl2.im;
+  Wynik.re = re + Skl2.re;
+  Wynik.im = im + Skl2.im;
   return Wynik;
 }
 
@@ -46,12 +46,12 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2){
  * Zwraca:
  *    Różnice dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona  LZespolona::operator - (LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re - Skl2.re;
-  Wynik.im = Skl1.im - Skl2.im;
+  Wynik.re = re - Skl2.re;
+  Wynik.im = im - Skl2.im;
   return Wynik;
 }
 
@@ -63,12 +63,12 @@ LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
  * Zwraca:
  *    Przemnożone dwa skladniki przekazane jako parametry.
  */
-LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona  LZespolona::operator * (LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re*Skl2.re - Skl2.im*Skl1.im;
-  Wynik.im = Skl1.re*Skl2.im + Skl2.re*Skl1.im;
+  Wynik.re = re*Skl2.re - Skl2.im*im;
+  Wynik.im = re*Skl2.im + Skl2.re*im;
   return Wynik;
 }
 /*!
@@ -80,25 +80,25 @@ LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
  *
  */
-LZespolona  operator / (LZespolona  Skl1,  double  Skl2)
+LZespolona  LZespolona::operator / (double  Skl2)
 {
   LZespolona  Wynik;
   if(Skl2 != 0){
-    Wynik.re = Skl1.re / Skl2;
-    Wynik.im = Skl1.im / Skl2;
+    Wynik.re = re / Skl2;
+    Wynik.im = im / Skl2;
   }
   cerr << "Dzielenie przez 0 proszę zmienić składową" << endl;
   return Wynik;
 }
 
-LZespolona  operator / (LZespolona  Skl1,  LZespolona Skl2)
+LZespolona  LZespolona::operator / (LZespolona Skl2)
 {
   LZespolona  Wynik;
   if (Skl2.re == 0 || Skl2.im == 0)
 {
    cerr << "Dzielenie przez 0 proszę zmienić składową" << endl;
 }
-  Wynik = operator * (Skl1, sprzezenie(Skl2));
+  Wynik = operator * (LZespolona::sprzezenie(Skl2));
   Wynik.re = Wynik.re/pow(modul(Skl2), 2);
   Wynik.im = Wynik.im/pow(modul(Skl2), 2);
   return Wynik;
@@ -114,7 +114,7 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona Skl2)
 ostream& operator << (ostream &STRwyj, LZespolona &LZ)
 {
   cout << "WESZŁO W wyswietlanie WYRZESP";
-  STRwyj << "(" << LZ.re << showpos << LZ.im << "i)" << noshowpos;
+  STRwyj << "(" << get.re << showpos << LZ.im << "i)" << noshowpos;
   return STRwyj;
 }
 
@@ -147,19 +147,32 @@ istream& operator >> (istream& STRwej, LZespolona& LZ )
  *
  */
 
-LZespolona sprzezenie(LZespolona  Skl1)
+LZespolona LZespolona::sprzezenie()
 {
-  Skl1.im = -(Skl1.im);
-  return Skl1;
+  im = -im;
+  return *this;
+}
+
+LZespolona LZespolona::sprzezenie(LZespolona Skl2)
+{
+  Skl2.im = -(Skl2.im);
+  return Skl2;
 }
 /*!
  * Funkcja Realizuje moduł ze składowej jaką mu zadamy.
  * 
  *
  */
-double modul(LZespolona Skl1){
+double LZespolona::modul(LZespolona Skl2){
   double Wynik;
 
-  Wynik = sqrt(pow(Skl1.re, 2) + pow(Skl1.im, 2));
+  Wynik = sqrt(pow(Skl2.re, 2) + pow(Skl2.im, 2));
+  return Wynik;
+}
+
+double LZespolona::modul(){
+  double Wynik;
+
+  Wynik = sqrt(pow(re, 2) + pow(im, 2));
   return Wynik;
 }
