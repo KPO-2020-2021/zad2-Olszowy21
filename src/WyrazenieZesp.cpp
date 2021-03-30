@@ -44,7 +44,8 @@ std::ostream& operator << (std::ostream& STRwyj, const Operator& Oper)
         STRwyj << '/';
         break;
         default:
-        STRwyj << "Błędny operator poprawne to + , - , * , /";
+        std::cerr << "Błędny operator, poprawne to (+,-,*,/) ";
+        STRwyj.setstate(std::ios::failbit);
         break;
     }
     return (STRwyj);
@@ -59,9 +60,29 @@ void WyrazenieZesp::Sprawdzoperator(std::istream &STRwej){
 }
 
 std::istream& operator >> (std::istream& STRwej, Operator& Oper ){
-    Oper.Sprawdzoperator(STRwej);
-    STRwej >> Oper;
-    return(STRwej);
+{
+    char ops1;
+    STRwej >> ops1;
+    switch(ops1)
+    {
+        case '+':
+            ops1 = Op_Dodaj;
+            break;
+        case '-':
+            ops1 = Op_Odejmij;
+            break;
+        case '*':
+            ops1 = Op_Mnoz;
+            break;
+        case '/':
+            ops1 = Op_Dziel;
+            break;
+        default:
+            STRwej.setstate(std::ios::failbit);
+            break;
+    }
+    return (STRwej);
+}
 }
 
 

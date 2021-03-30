@@ -104,8 +104,6 @@ LZespolona  LZespolona::operator / (LZespolona Skl2)
   return Wynik;
 }
 
-
-
 /*!
  * Realizuje przeciążenie operatora wyjścia.
  * Wyświetla Liczbę zespoloną na wyjściu.
@@ -114,7 +112,7 @@ LZespolona  LZespolona::operator / (LZespolona Skl2)
 ostream& operator << (ostream &STRwyj, LZespolona &LZ)
 {
   cout << "WESZŁO W wyswietlanie WYRZESP";
-  STRwyj << "(" << get.re << showpos << LZ.im << "i)" << noshowpos;
+  STRwyj << "(" << LZ.re << showpos << LZ.im << "i)" << noshowpos;
   return STRwyj;
 }
 
@@ -133,14 +131,17 @@ void Sprawdzznak(istream &STRwej, char znak){
  */
 istream& operator >> (istream& STRwej, LZespolona& LZ )
 {
-  std::cout << "WESZŁO W wczytywanie dla LI ZESPOLONEJ" << endl;
+  double tmcz; 
+  std::cout << "WESZŁO W wczytywanie dla LICZBY ZESPOLONEJ" << endl;
   Sprawdzznak(STRwej, '(');
-  STRwej >> LZ.re;
-  STRwej >> LZ.im;
+  STRwej >> LZ.re >> LZ.im;
   Sprawdzznak(STRwej, 'i');
   Sprawdzznak(STRwej, ')');
   return STRwej;
 }
+
+
+
 /*!
  * Funkcja Realizuje sprzężenie składowej jaką mu zadamy.
  * 

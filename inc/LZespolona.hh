@@ -18,17 +18,33 @@
  * Modeluje pojecie liczby zespolonej
  */
 struct  LZespolona {
-private:
+public:
   
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
 
-public:
-  void set(LZespolona Skl2){
+  
+/*
+  LZespolona() : re( 0 ) {};
+  LZespolona() : im( 0 ) {};
+
+  void setre(LZespolona Skl2){
     re = Skl2.re;
+  }
+  void setim(LZespolona Skl2){
     im = Skl2.im;
   }
-  LZespolona get();
+  double getre() const {return re;}
+  double getim() const {return im;}
+
+  
+
+  LZespolona(double _re) : re(_re){}
+  LZespolona(double _im) : im(_im){}
+  LZespolona();
+  explicit operator double() const { return re; }
+  explicit operator double() const { return im; }
+  */
 
   bool operator == (LZespolona  Skl2);
 
@@ -46,8 +62,14 @@ public:
   double modul(LZespolona Skl2);
   void Sprawdzznak(std::istream &STRwej, char znak);
 
- // friend std::ostream& operator << (std::ostream&, LZespolona&);
-  // friend std::istream& operator >> (std::istream&, LZespolona&);
+/*
+ * 
+ * friend std::ostream& operator << (std::ostream&, LZespolona&);
+ * friend std::istream& operator >> (std::istream&, LZespolona&);
+ * friend struct WyrazenieZesp;
+ * friend bool PobierzNastpnePytanie( BazaTestu* , WyrazenieZesp*);
+ * 
+ */
 };
 
 
