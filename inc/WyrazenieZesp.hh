@@ -34,7 +34,8 @@ struct WyrazenieZesp {
 */    
 
 std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WZ );
-std::ostream& operator << (std::ostream& STRwyj, WyrazenieZesp& WyrZ);
-std::istream& operator >> (std::istream& STRwej, const Operator& Operarator );
+std::ostream& operator << (std::ostream& STRwyj, const WyrazenieZesp& WyrZ);
+std::istream& operator >> (std::istream& STRwej, Operator& Operarator );
+std::ostream& operator << (std::ostream& STRwyj, const Operator& Oper);
 
 #endif

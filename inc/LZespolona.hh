@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include <sstream>
 
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
@@ -13,7 +14,7 @@
  */
 
 
-
+struct WyrazenieZesp;
 /*!
  * Modeluje pojecie liczby zespolonej
  */
@@ -46,7 +47,7 @@ public:
   explicit operator double() const { return im; }
   */
 
-  bool operator == (LZespolona  Skl2);
+  bool operator == ( const LZespolona  Skl2) const;
 
   LZespolona  operator + (LZespolona  Skl2);
   LZespolona  operator - (LZespolona  Skl2);
@@ -74,7 +75,7 @@ public:
 
 
 
-std::ostream& operator << (std::ostream& STRwyj, LZespolona& LZ );
+std::ostream& operator << (std::ostream& STRwyj, const LZespolona& LZ );
 std::istream& operator >> (std::istream& STRwej, LZespolona& LZ );
 
 /*

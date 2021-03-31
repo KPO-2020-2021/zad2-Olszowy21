@@ -28,18 +28,36 @@ int main(int argc, char **argv)
 
 
 
-  WyrazenieZesp   WyrZ_PytanieTestowe;
+  WyrazenieZesp WyrZ_PytanieTestowe;
   LZespolona TYMCZ;
-  
-  Naliczanie Odpowiedzi = {0 , 0}; 
+  Naliczanie Odpowiedzi;
+
+
 
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    std::cout << " Czesc rzeczywista pierwszego argumentu: ";
-    std::cout << WyrZ_PytanieTestowe.Arg1.re << std::endl;
+    std::cout << "? Podaj wynik operacji:";
+    std::cout << WyrZ_PytanieTestowe << std::endl;
+    std::cin >> TYMCZ;
+    std::cout << "Twoja odpowiedź: " << TYMCZ;
+    while(std::cin.fail()){
+      for(int i = 3; i > 0; i--){
+      std::cin.clear();
+      std::cin.ignore(100,'\n');
+      std::cout << "'( Błędna forma Liczby zespolonej >>> Szablon: (12-2.5i) lub (3*2i)\n";
+      std::cout << ")Pozostała ilość prób: " << i;
+      std::cin >> TYMCZ;
+      }
+    }
     
-  }
 
-  void Wyniktestu();
+    
+
+  
+
+
+}
+
+  void Wynikitestu(Naliczanie Pkt);
 
   std::cout << std::endl;
   std::cout << " Koniec testu" << std::endl;

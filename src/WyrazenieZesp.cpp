@@ -21,9 +21,13 @@
  * wczytuje liczbę zespoloną z wejścia, oraz sprawdza poprawność składni.
  *  
  */
-std::ostream& operator << (std::ostream& STRwyj, WyrazenieZesp& WyrZ)
+
+
+
+std::ostream& operator << (std::ostream& STRwyj, const WyrazenieZesp& WyrZ)
 {
-    STRwyj << "(" << WyrZ.Arg1 << ")" << "(" << WyrZ.Arg2 << ")" << std::noshowpos;
+
+    STRwyj << WyrZ.Arg1 << WyrZ.Op << WyrZ.Arg2 << std::noshowpos;
     return STRwyj;
 }
 
@@ -88,7 +92,7 @@ std::istream& operator >> (std::istream& STRwej, Operator& Oper ){
 
 std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WyrZ ){
     std::cout << std::endl;
-    STRwej >> WyrZ.Arg1; // OGARNAC OPERATOR
+    STRwej >> WyrZ.Arg1;
     STRwej >> WyrZ.Op;
     STRwej >> WyrZ.Arg2;
     return(STRwej);

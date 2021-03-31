@@ -7,7 +7,7 @@
  * w pliku naglowkowym.
  */
 
-void Wynikitestu(Naliczanie Pkt)
+void Naliczanie::Wynikitestu(Naliczanie Pkt)
 {
     double Wynik;
     Wynik = ((double)Pkt.Poprawne / ((double)Pkt.Poprawne + (double)Pkt.Niepoprawne)) * 100;

@@ -1,8 +1,7 @@
 #include "LZespolona.hh"
 
-#define MIN_DIFF 0.0001
+#define MIN_DIFF 0.01
 
-using namespace std;
 /*!
  * Realizuje porównanie dwoch liczb zespolonych.
  * Argumenty:
@@ -14,8 +13,8 @@ using namespace std;
  * UWAGA! przy wpisywaniu wyniku należy uwzględniać 3 miejsca po przecinku!!!
  */
 
-bool  LZespolona::operator == (LZespolona  Skl2){
-  if ((abs(re - Skl2.re) <= MIN_DIFF) && (abs(im - Skl2.im) <= MIN_DIFF))
+bool LZespolona::operator == ( const LZespolona  Skl2)  const{
+  if ((abs(this->re - Skl2.re) <= MIN_DIFF) && (abs(this->im - Skl2.im) <= MIN_DIFF))
     return true;
   else
 
@@ -33,8 +32,8 @@ bool  LZespolona::operator == (LZespolona  Skl2){
 LZespolona  LZespolona::operator + (LZespolona  Skl2){
   LZespolona  Wynik;
 
-  Wynik.re = re + Skl2.re;
-  Wynik.im = im + Skl2.im;
+  Wynik.re = this->re + Skl2.re;
+  Wynik.im = this->im + Skl2.im;
   return Wynik;
 }
 
@@ -50,8 +49,8 @@ LZespolona  LZespolona::operator - (LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
-  Wynik.re = re - Skl2.re;
-  Wynik.im = im - Skl2.im;
+  Wynik.re = this->re - Skl2.re;
+  Wynik.im = this->im - Skl2.im;
   return Wynik;
 }
 
@@ -67,8 +66,8 @@ LZespolona  LZespolona::operator * (LZespolona  Skl2)
 {
   LZespolona  Wynik;
 
-  Wynik.re = re*Skl2.re - Skl2.im*im;
-  Wynik.im = re*Skl2.im + Skl2.re*im;
+  Wynik.re = this->re*Skl2.re - Skl2.im*this->im;
+  Wynik.im = this->re*Skl2.im + Skl2.re*this->im;
   return Wynik;
 }
 /*!
@@ -84,10 +83,11 @@ LZespolona  LZespolona::operator / (double  Skl2)
 {
   LZespolona  Wynik;
   if(Skl2 != 0){
-    Wynik.re = re / Skl2;
-    Wynik.im = im / Skl2;
+    Wynik.re = this->re / Skl2;
+    Wynik.im = this->im / Skl2;
   }
-  cerr << "Dzielenie przez 0 proszę zmienić składową" << endl;
+  throw std::runtime_error("matematyczny error, dzielenie przez zero w double\n)");
+  std::cerr << "Dzielenie przez 0 proszę zmienić składową" << std::endl;
   return Wynik;
 }
 
@@ -96,7 +96,8 @@ LZespolona  LZespolona::operator / (LZespolona Skl2)
   LZespolona  Wynik;
   if (Skl2.re == 0 || Skl2.im == 0)
 {
-   cerr << "Dzielenie przez 0 proszę zmienić składową" << endl;
+  throw std::runtime_error("matematyczny error, dzielenie przez zero w LZespolona\n)");
+  std::cerr << "Dzielenie przez 0 proszę zmienić składową" << std::endl;
 }
   Wynik = operator * (LZespolona::sprzezenie(Skl2));
   Wynik.re = Wynik.re/pow(modul(Skl2), 2);
@@ -109,18 +110,19 @@ LZespolona  LZespolona::operator / (LZespolona Skl2)
  * Wyświetla Liczbę zespoloną na wyjściu.
  *
  */
-ostream& operator << (ostream &STRwyj, LZespolona &LZ)
+std::ostream& operator << (std::ostream &STRwyj, const LZespolona &LZ)
 {
-  cout << "WESZŁO W wyswietlanie WYRZESP";
-  STRwyj << "(" << LZ.re << showpos << LZ.im << "i)" << noshowpos;
+  // cout << "WESZŁO W wyswietlanie WYRZESP";
+  STRwyj << "(" << LZ.re << std::showpos << LZ.im << "i)" << std::noshowpos;
   return STRwyj;
 }
 
-void Sprawdzznak(istream &STRwej, char znak){
+void Sprawdzznak(std::istream &STRwej, char znak){
   char Wejznak = ' ';
   STRwej >> Wejznak;
+  std::cout << "Po wczytaniu znaku ktory jest" << Wejznak << std::endl;
   if (Wejznak != znak){
-    STRwej.setstate(ios::failbit);
+    STRwej.setstate(std::ios::failbit);
   }
 }
 
@@ -129,12 +131,14 @@ void Sprawdzznak(istream &STRwej, char znak){
  * wczytuje liczbę zespoloną z wejścia, oraz sprawdza poprawność składni.
  *
  */
-istream& operator >> (istream& STRwej, LZespolona& LZ )
-{
-  double tmcz; 
-  std::cout << "WESZŁO W wczytywanie dla LICZBY ZESPOLONEJ" << endl;
+std::istream& operator >> (std::istream& STRwej, LZespolona& LZ )
+{  
+  std::cout << "WESZŁO W wczytywanie dla LICZBY ZESPOLONEJ" << std::endl;
   Sprawdzznak(STRwej, '(');
-  STRwej >> LZ.re >> LZ.im;
+  STRwej >> LZ.re;
+  std::cout << "LZ.re to " << LZ.re << std::endl;
+  STRwej >> LZ.im;
+  std::cout << "LZ.im to" << LZ.im << std::endl;
   Sprawdzznak(STRwej, 'i');
   Sprawdzznak(STRwej, ')');
   return STRwej;
@@ -150,9 +154,9 @@ istream& operator >> (istream& STRwej, LZespolona& LZ )
 
 LZespolona LZespolona::sprzezenie()
 {
-  im = -im;
+  this->im = -(this->im);
   return *this;
-}
+} 
 
 LZespolona LZespolona::sprzezenie(LZespolona Skl2)
 {
