@@ -21,7 +21,7 @@ struct WyrazenieZesp {
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
 
   void Wyswietl();
-  WyrazenieZesp Oblicz();
+  LZespolona Oblicz(WyrazenieZesp WyrZ);
   WyrazenieZesp WczytajWZ();
   void Sprawdzoperator(std::istream &STRwej);
 
@@ -32,7 +32,6 @@ struct WyrazenieZesp {
 * Funkcje ponizej nalezy zdefiniowac w module.
 *
 */    
-
 std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WZ );
 std::ostream& operator << (std::ostream& STRwyj, const WyrazenieZesp& WyrZ);
 std::istream& operator >> (std::istream& STRwej, Operator& Operarator );

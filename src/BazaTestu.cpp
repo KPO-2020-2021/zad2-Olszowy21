@@ -27,7 +27,9 @@ static WyrazenieZesp TestTrudny[] =
     {{4,8}, Op_Dziel, {1,0}},
   };
 
-
+//LZespolona BazaTestu::Oblicztest(){
+  //WyrZ.Arg1;
+//}
 
 
 

@@ -22,7 +22,28 @@
  *  
  */
 
+LZespolona WyrazenieZesp::Oblicz (WyrazenieZesp WyrZ)
+{
+  LZespolona Tymcz;
+  switch (WyrZ.Op){
+  case Op_Dodaj:
+    return (WyrZ.Arg1 + WyrZ.Arg2);
+    break;
 
+  case Op_Odejmij:
+    return (WyrZ.Arg1 - WyrZ.Arg2);
+    break;
+
+  case Op_Mnoz:
+    return (WyrZ.Arg1 * WyrZ.Arg2);
+    break;
+
+  case Op_Dziel:
+    return (WyrZ.Arg1 / WyrZ.Arg2);
+    break;
+  }
+  return Tymcz;
+}
 
 std::ostream& operator << (std::ostream& STRwyj, const WyrazenieZesp& WyrZ)
 {
@@ -48,7 +69,6 @@ std::ostream& operator << (std::ostream& STRwyj, const Operator& Oper)
         STRwyj << '/';
         break;
         default:
-        std::cerr << "Błędny operator, poprawne to (+,-,*,/) ";
         STRwyj.setstate(std::ios::failbit);
         break;
     }
@@ -97,6 +117,7 @@ std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WyrZ ){
     STRwej >> WyrZ.Arg2;
     return(STRwej);
 }
+
 
 WyrazenieZesp WyrazenieZesp::WczytajWZ(){
     std::cout << std::endl;

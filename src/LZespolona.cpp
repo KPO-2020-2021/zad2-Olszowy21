@@ -87,7 +87,6 @@ LZespolona  LZespolona::operator / (double  Skl2)
     Wynik.im = this->im / Skl2;
   }
   throw std::runtime_error("matematyczny error, dzielenie przez zero w double\n)");
-  std::cerr << "Dzielenie przez 0 proszę zmienić składową" << std::endl;
   return Wynik;
 }
 
@@ -97,7 +96,6 @@ LZespolona  LZespolona::operator / (LZespolona Skl2)
   if (Skl2.re == 0 || Skl2.im == 0)
 {
   throw std::runtime_error("matematyczny error, dzielenie przez zero w LZespolona\n)");
-  std::cerr << "Dzielenie przez 0 proszę zmienić składową" << std::endl;
 }
   Wynik = operator * (LZespolona::sprzezenie(Skl2));
   Wynik.re = Wynik.re/pow(modul(Skl2), 2);
@@ -136,9 +134,7 @@ std::istream& operator >> (std::istream& STRwej, LZespolona& LZ )
   std::cout << "WESZŁO W wczytywanie dla LICZBY ZESPOLONEJ" << std::endl;
   Sprawdzznak(STRwej, '(');
   STRwej >> LZ.re;
-  std::cout << "LZ.re to " << LZ.re << std::endl;
   STRwej >> LZ.im;
-  std::cout << "LZ.im to" << LZ.im << std::endl;
   Sprawdzznak(STRwej, 'i');
   Sprawdzznak(STRwej, ')');
   return STRwej;

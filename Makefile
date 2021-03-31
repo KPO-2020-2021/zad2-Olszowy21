@@ -42,8 +42,9 @@ ${TBIN}:
 	mkdir ${TBIN}
 
 test:  ${TBIN}/test_1 ${TBIN}/test_2
-	${TBIN}/test_1 
+	${TBIN}/test_1
 	${TBIN}/test_2
+
 run:
 	${TRGDIR}/test_arytm_zesp latwy
 	${TRGDIR}/test_arytm_zesp trudny
