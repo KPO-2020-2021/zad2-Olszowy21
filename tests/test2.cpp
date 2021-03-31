@@ -71,10 +71,10 @@ TEST_CASE("Test LZespolona minimalnie nierówne") {
     x.re = 2;
     x.im = 2;
 
-    y.re = 2.0002;
-    y.im = 2.0002;
+    y.re = 2.002;
+    y.im = 2.002;
  
-   CHECK(!(x==y));
+   CHECK(x==y);
 }
 
 TEST_CASE("Test LZespolona Nierówne") {
