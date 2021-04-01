@@ -127,3 +127,8 @@ bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu, WyrazenieZesp *wskWyrazeni
   ++wskBazaTestu->IndeksPytania;
   return true;
 }
+
+
+LZespolona BazaTestu::Oblicztest(){
+  // Wkrótce będzie napisane
+}

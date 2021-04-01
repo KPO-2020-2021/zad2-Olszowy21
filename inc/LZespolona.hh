@@ -55,6 +55,9 @@ public:
   LZespolona  operator / (LZespolona Skl2);
   LZespolona  operator * (LZespolona  Skl2);
 
+  LZespolona  operator += (LZespolona const &Skl2);
+  LZespolona  operator /= (LZespolona const &Skl2);
+
   LZespolona sprzezenie();
   LZespolona sprzezenie(LZespolona Skl2);
 
@@ -62,6 +65,7 @@ public:
   double modul();
   double modul(LZespolona Skl2);
   void Sprawdzznak(std::istream &STRwej, char znak);
+
 
 /*
  * 

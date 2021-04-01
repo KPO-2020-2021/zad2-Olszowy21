@@ -9,7 +9,7 @@ public:
   int Niepoprawne;
   Naliczanie() : Poprawne( 0 ), Niepoprawne( 0 ){};
 
-  void Wynikitestu(Naliczanie Pkt);
+  LZespolona Wynikitestu();
 };
 
 

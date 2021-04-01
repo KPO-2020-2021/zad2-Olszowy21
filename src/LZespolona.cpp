@@ -13,6 +13,18 @@
  * UWAGA! przy wpisywaniu wyniku należy uwzględniać 3 miejsca po przecinku!!!
  */
 
+LZespolona  LZespolona::operator += (LZespolona const &Skl2){
+  this->re = this->re + Skl2.re;
+  this->im = this->im + Skl2.im;
+  return (*this);
+}
+
+LZespolona  LZespolona::operator /= (LZespolona const &Skl2){
+  this->re = this->re / Skl2.re;
+  this->im = this->im / Skl2.im;
+  return (*this);
+}
+
 bool LZespolona::operator == ( const LZespolona  Skl2)  const{
   if ((abs(this->re - Skl2.re) <= MIN_DIFF) && (abs(this->im - Skl2.im) <= MIN_DIFF))
     return true;
@@ -86,7 +98,9 @@ LZespolona  LZespolona::operator / (double  Skl2)
     Wynik.re = this->re / Skl2;
     Wynik.im = this->im / Skl2;
   }
-  throw std::runtime_error("matematyczny error, dzielenie przez zero w double\n)");
+  else if (Skl2 == 0){
+    throw std::runtime_error("matematyczny error, dzielenie przez zero w double\n)");
+  }
   return Wynik;
 }
 

@@ -29,13 +29,13 @@ int main(int argc, char **argv)
 
 
   WyrazenieZesp WyrZ_PytanieTestowe;
-  LZespolona TYMCZ;
+  LZespolona TYMCZ, x;
   Naliczanie Odpowiedzi;
 
 
 
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    std::cout << "? Podaj wynik operacji:";
+    std::cout << ":? Podaj wynik operacji:";
     std::cout << WyrZ_PytanieTestowe << std::endl;
     std::cin >> TYMCZ;
     std::cout << "Twoja odpowiedź: " << TYMCZ;
@@ -43,26 +43,26 @@ int main(int argc, char **argv)
       for(int i = 3; i > 0; i--){
       std::cin.clear();
       std::cin.ignore(100,'\n');
-      std::cout << "'( Błędna forma Liczby zespolonej >>> Szablon: (12-2.5i) lub (3*2i)\n";
-      std::cout << ")Pozostała ilość prób: " << i;
+      std::cout << ":'( Błędna forma Liczby zespolonej >>> Szablon: (12-2.5i) lub (3*2i)\n";
+      std::cout << ":)Pozostała ilość prób: " << i << std::endl;
       std::cin >> TYMCZ;
       }
     }
-
-    
-
-
-    
-
-  
-
-
+    x = BazaT.Oblicztest();
+    if ( TYMCZ == x){
+      std::cout << ":) Odpowiedz poprawna" << std::endl;
+      ++Odpowiedzi.Poprawne;
+    }
+    else{
+      std::cout << ":/ Odpowiedz niepoprawna" << std::endl;
+      ++Odpowiedzi.Niepoprawne;
+    }
 }
-
-  void Wynikitestu(Naliczanie Pkt);
 
   std::cout << std::endl;
   std::cout << " Koniec testu" << std::endl;
   std::cout << std::endl;
+
+  Odpowiedzi.Wynikitestu();
 
 }

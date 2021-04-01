@@ -12,13 +12,13 @@
 
 struct BazaTestu {
   WyrazenieZesp  *wskTabTestu;   /* Wskaznik na tablice zawierajaca pytania testu */
-  WyrazenieZesp  WyrZ;
   unsigned int    IloscPytan;    /* Ilosc wszystkich pytan */
   unsigned int    IndeksPytania; /* Numer pytania, ktore ma byc pobrane jako nastepne */
   
   LZespolona Oblicztest();
   int inicjalizujplik();
   void zamknijplik();
+  WyrazenieZesp  WyrZ;
 };
 
 /*
