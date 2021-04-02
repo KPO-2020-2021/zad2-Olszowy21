@@ -24,7 +24,7 @@
 
 LZespolona WyrazenieZesp::Oblicz (WyrazenieZesp WyrZ)
 {
-  LZespolona Tymcz;
+  LZespolona Tymczasowy;
   switch (WyrZ.Op){
   case Op_Dodaj:
     return (WyrZ.Arg1 + WyrZ.Arg2);
@@ -42,8 +42,10 @@ LZespolona WyrazenieZesp::Oblicz (WyrazenieZesp WyrZ)
     return (WyrZ.Arg1 / WyrZ.Arg2);
     break;
   }
-  return Tymcz;
+  return Tymczasowy;
 }
+
+
 
 std::ostream& operator << (std::ostream& STRwyj, const WyrazenieZesp& WyrZ)
 {

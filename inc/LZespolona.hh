@@ -24,10 +24,23 @@ public:
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
 
-  
+  LZespolona(double x, double y){
+    re = x;
+    im = y;
+  }
+
+  LZespolona(){
+    re = 0.0;
+    im = 0.0;
+  }
+
+
+
+
 /*
-  LZespolona() : re( 0 ) {};
-  LZespolona() : im( 0 ) {};
+  LZespolona() : re{ 0 } {};
+  LZespolona() : im{ 0 } {};
+
 
   void setre(LZespolona Skl2){
     re = Skl2.re;

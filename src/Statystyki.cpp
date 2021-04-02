@@ -7,11 +7,12 @@
  * w pliku naglowkowym.
  */
 
-LZespolona Naliczanie::Wynikitestu()
+double Naliczanie::Wynikitestu()
 {
     double Wynik;
     Wynik = ((double)this->Poprawne / ((double)this->Poprawne + (double)this->Niepoprawne)) * 100;
     std::cout << "Procentowa poprawność odpowiedzi: " << Wynik << "%" << std::endl;
     std::cout << "Dobre odpowiedzi: " << this->Poprawne << std::endl;
     std::cout << "Złe odpowiedzi: " << this->Niepoprawne << std::endl;
+    return Wynik;
 }

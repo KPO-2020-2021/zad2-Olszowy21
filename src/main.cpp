@@ -14,13 +14,12 @@ int main(int argc, char **argv)
     return 1;
   }
 
-  BazaTestu BazaT = { nullptr , 0, 0 };
-
+/*
   if (InicjalizujTest(&BazaT, argv[1]) == false) {
     std::cerr << " Inicjalizacja testu nie powiodla sie." << std::endl;
     return 1;
   }
-
+*/
   
   std::cout << std::endl;
   std::cout << " Start testu arytmetyki zespolonej: " << argv[1] << std::endl;
@@ -31,12 +30,16 @@ int main(int argc, char **argv)
   WyrazenieZesp WyrZ_PytanieTestowe;
   LZespolona TYMCZ, x;
   Naliczanie Odpowiedzi;
+  BazaTestu BazaT;
+
+  BazaT.inicjalizujplik();
 
 
-
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    std::cout << ":? Podaj wynik operacji:";
-    std::cout << WyrZ_PytanieTestowe << std::endl;
+  while (!BazaT.plik.fail()) {
+    BazaT.inicjalizujplik(); 
+    std::cout << ":? Podaj wynik operacji: ";
+    BazaT.pobierzpytanie();
+    std::cout << BazaT.WyrZ;
     std::cin >> TYMCZ;
     std::cout << "Twoja odpowiedź: " << TYMCZ;
     while(std::cin.fail()){
@@ -47,7 +50,7 @@ int main(int argc, char **argv)
       std::cout << ":)Pozostała ilość prób: " << i << std::endl;
       std::cin >> TYMCZ;
       }
-    }
+    } // DO SKOPIOWANIA --------------------------------------------------
     x = BazaT.Oblicztest();
     if ( TYMCZ == x){
       std::cout << ":) Odpowiedz poprawna" << std::endl;
