@@ -24,7 +24,8 @@ public:
   std::fstream plik;
   LZespolona Oblicztest();
   bool pobierzpytanie();
-  bool inicjalizujplik();
+  bool inicjalizujpliklatwy();
+  bool inicjalizujpliktrudny();
   void zamknijplik();
   WyrazenieZesp  WyrZ;
 };

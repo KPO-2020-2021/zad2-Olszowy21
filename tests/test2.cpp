@@ -1,6 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "./doctest/doctest.h"
+#include "WyrazenieZesp.hh"
 #include "LZespolona.hh"
+#include <string>
 
 TEST_CASE("Test LZespolona dzielenie przez skalar 1") {
     LZespolona x, y;
@@ -282,3 +284,135 @@ TEST_CASE("Test LZespolona mnożenie przez (1 +1i)") {
     CHECK(x*y==z);
     std::cout << "Jesteśmy po wyrażeniu check" << std::endl;
 }
+
+TEST_CASE("Test sprzezenie zerowa część urojona") {
+    LZespolona x, y;
+    
+    x.re = 2;
+    x.im = 0;
+
+    y.re = 2;
+    y.im = 0; 
+
+    x.sprzezenie();
+ 
+   CHECK(x==y);
+}
+
+
+TEST_CASE("Test sprzezenie niezerowa część urojona") {
+    LZespolona x, y;
+    
+    x.re = 2;
+    x.im = 2;
+
+    y.re = 2;
+    y.im = -2; 
+
+    x.sprzezenie();
+ 
+   CHECK(x == y);
+}
+/*
+TEST_CASE("Test Wyswietlanie LZespolonej") {
+    LZespolona y;
+    std::string b;
+
+    y.re = 2;
+    y.im = 2; 
+
+    std::cout << y;
+ 
+   CHECK(std::cout == "(2+2i)");
+}
+
+
+
+TEST_CASE("Test Wczytywanie LZespolonej") {
+    LZespolona x, y;
+    
+    x.re = 2;
+    x.im = 2;
+
+    y.re = 2;
+    y.im = -2; 
+ 
+   CHECK(x==y);
+}
+
+*/
+TEST_CASE("Test moduł z kwadratem LZespolona") {
+    LZespolona x, y, z;
+    
+    x.re = 3;
+    x.im = 4;
+
+    y.re = 5;
+    y.im = 0; 
+
+    z.re = x.modul();      
+    z.im = 0; 
+
+ 
+   CHECK(z == y);
+}
+
+/*
+TEST_CASE("Test WyrazenieZesp dodawanie") {
+    
+    LZespolona x(5, 3);
+    LZespolona y(6, 2);
+    LZespolona z(11, 5);
+    LZespolona n;
+    WyrazenieZesp w(x, Op_Dodaj, y);
+
+    n = w.Oblicz();
+
+    CHECK(n == z);
+
+}
+
+
+
+TEST_CASE("Test WyrazenieZesp odejmowanie") {
+
+    LZespolona x(12, 4);
+    LZespolona y(6, 2);
+    LZespolona z(6, 6);
+    LZespolona n;
+    WyrazenieZesp w(x, Op_Odejmij, y);
+    
+    n = w.Oblicz();
+
+    CHECK(n == z);
+
+}
+
+TEST_CASE("Test WyrazenieZesp mnożenie") {
+
+    LZespolona x(2, 1);
+    LZespolona y(3, 4);
+    LZespolona z(2, 11);
+    LZespolona n;
+    WyrazenieZesp w(x, Op_Mnoz, y);
+
+    n = w.Oblicz();
+
+    CHECK(n == z);
+
+}
+
+TEST_CASE("Test WyrazenieZesp dzielenie") {
+    
+    LZespolona x(5, 3);
+    LZespolona y(6, 2);
+    LZespolona z(11, 5);
+    LZespolona n;
+    WyrazenieZesp w(x, Op_Dziel, y);
+
+    n = w.Oblicz();
+
+    CHECK(n == z);
+
+}
+*/

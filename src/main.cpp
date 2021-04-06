@@ -14,12 +14,6 @@ int main(int argc, char **argv)
     return 1;
   }
 
-/*
-  if (InicjalizujTest(&BazaT, argv[1]) == false) {
-    std::cerr << " Inicjalizacja testu nie powiodla sie." << std::endl;
-    return 1;
-  }
-*/
   
   std::cout << std::endl;
   std::cout << " Start testu arytmetyki zespolonej: " << argv[1] << std::endl;
@@ -31,40 +25,63 @@ int main(int argc, char **argv)
   LZespolona TYMCZ, x;
   Naliczanie Odpowiedzi;
   BazaTestu BazaT;
+  
 
-  BazaT.inicjalizujplik();
+  if(strcmp( argv[1], "latwy") == 0){
+    BazaT.inicjalizujpliklatwy();
+  }
+  else if(strcmp( argv[1], "trudny") == 0){
+    BazaT.inicjalizujpliktrudny();
+  }
+  else{
+    std::cout << " Podano błędną nazwę testu dozwolone to ( latwy / trudny ) \n ";
+    std::cin.clear();
+    std::cout << " Program nalezy ponownie uruchomic z poprawnym wywolaniem \n";
+    exit (1);
+  }
 
 
-  while (!BazaT.plik.fail()) {
-    BazaT.inicjalizujplik(); 
+  while (BazaT.pobierzpytanie()) {
+    int i = 4;
+    
     std::cout << ":? Podaj wynik operacji: ";
-    BazaT.pobierzpytanie();
-    std::cout << BazaT.WyrZ;
+    std::cout << BazaT.WyrZ << std::endl;
     std::cin >> TYMCZ;
-    std::cout << "Twoja odpowiedź: " << TYMCZ;
+
+    if(!std::cin.fail()){
+      std::cout << ";3 Twoja odpowiedź: " << TYMCZ;
+    }
+
     while(std::cin.fail()){
-      for(int i = 3; i > 0; i--){
+      std::cout << "\n:'( Błędna forma Liczby zespolonej >>> Szablon: (12-2.5i) lub (3+2i)" << std::endl;
+      std::cout << "\n:| Pozostała ilość prób: " << (--i) << std::endl;
+      if( i == 0){
+        std::cout << "\n:< Wykorzystano wszystkie możliwe próby, może następnym razem się uda ;) " << std::endl;
+        exit (-1);
+      }
       std::cin.clear();
       std::cin.ignore(100,'\n');
-      std::cout << ":'( Błędna forma Liczby zespolonej >>> Szablon: (12-2.5i) lub (3*2i)\n";
-      std::cout << ":)Pozostała ilość prób: " << i << std::endl;
       std::cin >> TYMCZ;
-      }
-    } // DO SKOPIOWANIA --------------------------------------------------
+      
+    }
+
     x = BazaT.Oblicztest();
+
     if ( TYMCZ == x){
-      std::cout << ":) Odpowiedz poprawna" << std::endl;
+      std::cout << "\n\t:) Odpowiedz poprawna" << std::endl;
       ++Odpowiedzi.Poprawne;
     }
     else{
-      std::cout << ":/ Odpowiedz niepoprawna" << std::endl;
+      std::cout << "\n\t:/ Odpowiedz niepoprawna" << std::endl;
       ++Odpowiedzi.Niepoprawne;
     }
-}
+  }
 
   std::cout << std::endl;
   std::cout << " Koniec testu" << std::endl;
   std::cout << std::endl;
+
+  BazaT.zamknijplik();
 
   Odpowiedzi.Wynikitestu();
 

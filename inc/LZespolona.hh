@@ -24,24 +24,10 @@ public:
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
 
-  LZespolona(double x, double y){
-    re = x;
-    im = y;
-  }
 
-  LZespolona(){
-    re = 0.0;
-    im = 0.0;
-  }
-
-
-
-
+  LZespolona(double _re, double _im) {re = _re; im = _im;};
+  LZespolona() = default;
 /*
-  LZespolona() : re{ 0 } {};
-  LZespolona() : im{ 0 } {};
-
-
   void setre(LZespolona Skl2){
     re = Skl2.re;
   }
@@ -50,15 +36,11 @@ public:
   }
   double getre() const {return re;}
   double getim() const {return im;}
-
+*/
   
 
-  LZespolona(double _re) : re(_re){}
-  LZespolona(double _im) : im(_im){}
-  LZespolona();
-  explicit operator double() const { return re; }
-  explicit operator double() const { return im; }
-  */
+
+  
 
   bool operator == ( const LZespolona  Skl2) const;
 
@@ -79,7 +61,6 @@ public:
   double modul(LZespolona Skl2);
   void Sprawdzznak(std::istream &STRwej, char znak);
 
-
 /*
  * 
  * friend std::ostream& operator << (std::ostream&, LZespolona&);
@@ -94,6 +75,7 @@ public:
 
 std::ostream& operator << (std::ostream& STRwyj, const LZespolona& LZ );
 std::istream& operator >> (std::istream& STRwej, LZespolona& LZ );
+// std::istream& operator >> (std::ifstream& const Danezpliku, LZespolona& LZ );
 
 /*
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow

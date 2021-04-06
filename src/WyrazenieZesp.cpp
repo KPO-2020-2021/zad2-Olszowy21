@@ -22,27 +22,27 @@
  *  
  */
 
-LZespolona WyrazenieZesp::Oblicz (WyrazenieZesp WyrZ)
+LZespolona WyrazenieZesp::Oblicz ()
 {
-  LZespolona Tymczasowy;
-  switch (WyrZ.Op){
-  case Op_Dodaj:
-    return (WyrZ.Arg1 + WyrZ.Arg2);
-    break;
+  switch (Op){
+    case Op_Dodaj:
+        return (Arg1 + Arg2);
+        break;
 
-  case Op_Odejmij:
-    return (WyrZ.Arg1 - WyrZ.Arg2);
-    break;
+    case Op_Odejmij:
+        return (Arg1 - Arg2);
+        break;
 
-  case Op_Mnoz:
-    return (WyrZ.Arg1 * WyrZ.Arg2);
-    break;
+    case Op_Mnoz:
+        return (Arg1 * Arg2);
+        break;
 
-  case Op_Dziel:
-    return (WyrZ.Arg1 / WyrZ.Arg2);
-    break;
+    case Op_Dziel:
+        return (Arg1 / Arg2);
+        break;
+    default:
+        return (Arg1 - Arg1);
   }
-  return Tymczasowy;
 }
 
 
@@ -58,21 +58,21 @@ std::ostream& operator << (std::ostream& STRwyj, const Operator& Oper)
 {
     switch(Oper)
     {
-        case Op_Dodaj:
-        STRwyj << '+';
-        break;
         case Op_Odejmij:
-        STRwyj << '-';
-        break;
+            STRwyj << '-';
+            break;
+        case Op_Dodaj:
+            STRwyj << '+';
+            break;
         case Op_Mnoz:
-        STRwyj << '*';
-        break;
+            STRwyj << '*';
+            break;
         case Op_Dziel:
-        STRwyj << '/';
-        break;
+            STRwyj << '/';
+            break;
         default:
-        STRwyj.setstate(std::ios::failbit);
-        break;
+            STRwyj.setstate(std::ios::failbit);
+            break;
     }
     return (STRwyj);
 }
@@ -92,16 +92,16 @@ std::istream& operator >> (std::istream& STRwej, Operator& Oper ){
     switch(ops1)
     {
         case '+':
-            ops1 = Op_Dodaj;
+            Oper = Op_Dodaj;
             break;
         case '-':
-            ops1 = Op_Odejmij;
+            Oper = Op_Odejmij;
             break;
         case '*':
-            ops1 = Op_Mnoz;
+            Oper = Op_Mnoz;
             break;
         case '/':
-            ops1 = Op_Dziel;
+            Oper = Op_Dziel;
             break;
         default:
             STRwej.setstate(std::ios::failbit);
