@@ -313,34 +313,59 @@ TEST_CASE("Test sprzezenie niezerowa część urojona") {
  
    CHECK(x == y);
 }
-/*
+
 TEST_CASE("Test Wyswietlanie LZespolonej") {
     LZespolona y;
-    std::string b;
+    std::stringstream b;
 
     y.re = 2;
     y.im = 2; 
 
-    std::cout << y;
+    b << y;
  
-   CHECK(std::cout == "(2+2i)");
-}
+   CHECK(b.str() == "(2+2i)");
+}   
 
 
 
 TEST_CASE("Test Wczytywanie LZespolonej") {
-    LZespolona x, y;
-    
-    x.re = 2;
-    x.im = 2;
+    LZespolona x;
+    std::istringstream b("(2+2i)");
 
-    y.re = 2;
-    y.im = -2; 
- 
-   CHECK(x==y);
+    b >> x;
+
+   CHECK(b.str() == "(2+2i)");
 }
 
-*/
+
+TEST_CASE("Test Wyswietlanie WyrazenieZesp") {
+    
+    LZespolona x(12, 4);
+    LZespolona y(6, 2);
+    WyrazenieZesp w(x, Op_Odejmij, y);
+    std::stringstream b;
+
+    b << w;
+ 
+   CHECK(b.str() == "(12+4i)-(6+2i)");
+}   
+
+
+
+TEST_CASE("Test Wczytywanie WyrazenieZesp") {
+    LZespolona x(12, 4);
+    LZespolona y(6, 2);
+    LZespolona z(6, 2);
+    WyrazenieZesp w(x, Op_Odejmij, y);
+    std::istringstream b("(12+4i)-(6+2i)");
+
+    b >> w;
+
+   CHECK(b.str() == "(12+4i)-(6+2i)");
+}
+
+
+
 TEST_CASE("Test moduł z kwadratem LZespolona") {
     LZespolona x, y, z;
     
@@ -357,34 +382,27 @@ TEST_CASE("Test moduł z kwadratem LZespolona") {
    CHECK(z == y);
 }
 
-/*
+
 TEST_CASE("Test WyrazenieZesp dodawanie") {
     
     LZespolona x(5, 3);
     LZespolona y(6, 2);
     LZespolona z(11, 5);
-    LZespolona n;
     WyrazenieZesp w(x, Op_Dodaj, y);
 
-    n = w.Oblicz();
-
-    CHECK(n == z);
+    CHECK(w.Oblicz() == z);
 
 }
-
-
 
 TEST_CASE("Test WyrazenieZesp odejmowanie") {
 
     LZespolona x(12, 4);
     LZespolona y(6, 2);
-    LZespolona z(6, 6);
-    LZespolona n;
+    LZespolona z(6, 2);
     WyrazenieZesp w(x, Op_Odejmij, y);
     
-    n = w.Oblicz();
 
-    CHECK(n == z);
+    CHECK(w.Oblicz() == z);
 
 }
 
@@ -393,26 +411,19 @@ TEST_CASE("Test WyrazenieZesp mnożenie") {
     LZespolona x(2, 1);
     LZespolona y(3, 4);
     LZespolona z(2, 11);
-    LZespolona n;
     WyrazenieZesp w(x, Op_Mnoz, y);
 
-    n = w.Oblicz();
-
-    CHECK(n == z);
+    CHECK(w.Oblicz() == z);
 
 }
 
 TEST_CASE("Test WyrazenieZesp dzielenie") {
     
-    LZespolona x(5, 3);
-    LZespolona y(6, 2);
-    LZespolona z(11, 5);
-    LZespolona n;
+    LZespolona x(8, 2);
+    LZespolona y(1, 1);
+    LZespolona z(5, -3);
     WyrazenieZesp w(x, Op_Dziel, y);
 
-    n = w.Oblicz();
-
-    CHECK(n == z);
+    CHECK(w.Oblicz() == z);
 
 }
-*/
