@@ -2,16 +2,6 @@
 
 #define MIN_DIFF 0.01
 
-/*!
- * Realizuje porównanie dwoch liczb zespolonych.
- * Argumenty:
- *    Skl1 - pierwsza porównywana liczba zespolona,
- *    Skl2 - druga porównywana liczba zespolona.
- * Zwraca:
- *    True dla równych liczb zespolonych.
- * 
- * UWAGA! przy wpisywaniu wyniku należy uwzględniać 3 miejsca po przecinku!!!
- */
 
 LZespolona  LZespolona::operator += (LZespolona const &Skl2){
   this->re = this->re + Skl2.re;
@@ -24,6 +14,14 @@ LZespolona  LZespolona::operator /= (LZespolona const &Skl2){
   this->im = this->im / Skl2.im;
   return (*this);
 }
+/*!
+ * Realizuje porównywanie dwoch liczb zespolonych.
+ * Argumenty:
+ *    Dane struktury - pierwszy skladnik dodawania,
+ *    Skl2 - drugi skladnik dodawania.
+ * Zwraca:
+ *    Sume dwoch skladnikow przekazanych jako parametry.
+ */
 
 bool LZespolona::operator == ( const LZespolona  Skl2)  const{
   if ((abs(this->re - Skl2.re) <= MIN_DIFF) && (abs(this->im - Skl2.im) <= MIN_DIFF))
@@ -36,7 +34,7 @@ bool LZespolona::operator == ( const LZespolona  Skl2)  const{
 /*!
  * Realizuje dodanie dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - pierwszy skladnik dodawania,
+ *    Dane struktury - pierwszy skladnik dodawania,
  *    Skl2 - drugi skladnik dodawania.
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
@@ -50,9 +48,9 @@ LZespolona  LZespolona::operator + (LZespolona  Skl2){
 }
 
 /*!
- * Realizuje odjęcie dwoch liczb zespolonych.
+ * Realizuje odejmowanie dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - pierwszy skladnik dodawania,
+ *    Dane struktury - pierwszy skladnik dodawania,
  *    Skl2 - drugi skladnik dodawania.
  * Zwraca:
  *    Różnice dwoch skladnikow przekazanych jako parametry.
@@ -63,13 +61,14 @@ LZespolona  LZespolona::operator - (LZespolona  Skl2)
 
   Wynik.re = this->re - Skl2.re;
   Wynik.im = this->im - Skl2.im;
+
   return Wynik;
 }
 
 /*!
  * Realizuje przemnożenie dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - pierwszy skladnik
+ *    Dane struktury - pierwszy skladnik
  *    Skl2 - drugi skladnik
  * Zwraca:
  *    Przemnożone dwa skladniki przekazane jako parametry.
@@ -85,7 +84,7 @@ LZespolona  LZespolona::operator * (LZespolona  Skl2)
 /*!
  * Realizuje dzielenie liczby zespolonej przez skalar.
  * Argumenty:
- *    Skl1 - dzielona liczba zespolona,
+ *    Dane struktury - dzielona liczba zespolona,
  *    Skl2 - skalar-dzielnik.
  * Zwraca:
  *    Wynik dzielenia dwoch skladnikow przekazanych jako parametry.
@@ -152,7 +151,7 @@ std::istream& operator >> (std::istream& STRwej, LZespolona& LZ )
 }
 
 /*!
- * Funkcja Realizuje sprzężenie składowej jaką mu zadamy.
+ * Funkcje Realizują sprzężenie składowej jaką mu zadamy lub z klasy.
  * 
  *
  */
@@ -169,7 +168,7 @@ LZespolona LZespolona::sprzezenie(LZespolona Skl2)
   return Skl2;
 }
 /*!
- * Funkcja Realizuje moduł ze składowej jaką mu zadamy.
+ * Funkcje Realizują moduł ze składowej jaką mu zadamy lub z klasy.
  * 
  *
  */

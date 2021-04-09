@@ -3,24 +3,12 @@
 #include "LZespolona.hh"
 
 
-
 /*!
- * Funkcja:
+ * Metoda:
  * Będzie sprawdzała zgodność operatorów
  * 
  */
 
-/*!
- * Funkcja:
- * Wyświetla Wyrażenie algebraiczne.
- 
- */
-
-/*!
- * Realizuje przeciążenie operatora wejścia.
- * wczytuje liczbę zespoloną z wejścia, oraz sprawdza poprawność składni.
- *  
- */
 
 LZespolona WyrazenieZesp::Oblicz ()
 {
@@ -47,12 +35,24 @@ LZespolona WyrazenieZesp::Oblicz ()
 
 
 
+/*!
+ * Metoda:
+ * Wyświetla Wyrażenie algebraiczne.
+ 
+ */
+
 std::ostream& operator << (std::ostream& STRwyj, const WyrazenieZesp& WyrZ)
 {
 
     STRwyj << WyrZ.Arg1 << WyrZ.Op << WyrZ.Arg2 << std::noshowpos;
     return STRwyj;
 }
+
+/*!
+ * Metoda:
+ * Wyświetla operator wyrz.
+ 
+ */
 
 std::ostream& operator << (std::ostream& STRwyj, const Operator& Oper)
 {
@@ -85,6 +85,12 @@ void WyrazenieZesp::Sprawdzoperator(std::istream &STRwej){
     }
 }
 
+/*!
+ * Realizuje przeciążenie operatora wejścia.
+ * Wczytuje wyrażenie zespolone z pliku, oraz sprawdza poprawność składni.
+ *  
+ */
+
 std::istream& operator >> (std::istream& STRwej, Operator& Oper ){
 {
     char ops1;
@@ -111,6 +117,12 @@ std::istream& operator >> (std::istream& STRwej, Operator& Oper ){
 }
 }
 
+/*!
+ * Realizuje przeciążenie operatora wejścia.
+ * Wczytuje wyrażenie zespolone z pliku, oraz sprawdza poprawność składni.
+ *  
+ */
+
 
 std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WyrZ ){
     std::cout << std::endl;
@@ -120,6 +132,11 @@ std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WyrZ ){
     return(STRwej);
 }
 
+/*!
+ * Realizuje przeciążenie operatora wejścia.
+ * Wczytuje wyrażenie zespolone z palca, oraz sprawdza poprawność składni.
+ *  
+ */
 
 WyrazenieZesp WyrazenieZesp::WczytajWZ(){
     std::cout << std::endl;
@@ -128,6 +145,11 @@ WyrazenieZesp WyrazenieZesp::WczytajWZ(){
     std::cin >> Arg2;
     return (*this);
 }
+
+/*!
+ * Metoda:
+ * Wyświetla operator wyrz.
+ */
 
 void WyrazenieZesp::Wyswietl(){
     

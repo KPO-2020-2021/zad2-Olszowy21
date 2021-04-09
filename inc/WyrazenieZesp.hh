@@ -4,12 +4,6 @@
 #include "LZespolona.hh"
 
 
-/*!
- * Modeluje zbior operatorow arytmetycznych.
- *
- *
- * Modeluje pojecie dwuargumentowego wyrazenia zespolonego
- */
 struct BazaTestu;
 
 enum Operator { Op_Dodaj, Op_Odejmij, Op_Mnoz, Op_Dziel };
@@ -19,6 +13,8 @@ struct WyrazenieZesp {
   Operator     Op;     // Opertor wyrazenia arytmetycznego
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
   
+// Kontruktory
+
   WyrazenieZesp() = default;
   
   
@@ -27,13 +23,8 @@ struct WyrazenieZesp {
     this->Op = Op;
     this->Arg2 = W2;
   }
-  /*
-  WyrazenieZesp(const WyrazenieZesp &coppy){
-    Arg1 = coppy.Arg1;
-    Op = coppy.Op;
-    Arg2 = coppy.Arg2;
-  }
-*/
+  
+// Metody
 
   void Wyswietl();
   LZespolona Oblicz();
@@ -43,10 +34,6 @@ struct WyrazenieZesp {
 };
 
 
-/*
-* Funkcje ponizej nalezy zdefiniowac w module.
-*
-*/    
 std::istream& operator >> (std::istream& STRwej, WyrazenieZesp& WZ );
 std::ostream& operator << (std::ostream& STRwyj, const WyrazenieZesp& WyrZ);
 std::istream& operator >> (std::istream& STRwej, Operator& Operarator );

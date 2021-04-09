@@ -24,23 +24,12 @@ public:
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
 
+// Kontruktory
 
   LZespolona(double _re, double _im) {re = _re; im = _im;};
   LZespolona() = default;
-/*
-  void setre(LZespolona Skl2){
-    re = Skl2.re;
-  }
-  void setim(LZespolona Skl2){
-    im = Skl2.im;
-  }
-  double getre() const {return re;}
-  double getim() const {return im;}
-*/
   
-
-
-  
+// Metody
 
   bool operator == ( const LZespolona  Skl2) const;
 
@@ -61,43 +50,11 @@ public:
   double modul(LZespolona Skl2);
   void Sprawdzznak(std::istream &STRwej, char znak);
 
-/*
- * 
- * friend std::ostream& operator << (std::ostream&, LZespolona&);
- * friend std::istream& operator >> (std::istream&, LZespolona&);
- * friend struct WyrazenieZesp;
- * friend bool PobierzNastpnePytanie( BazaTestu* , WyrazenieZesp*);
- * 
- */
+
 };
-
-
 
 std::ostream& operator << (std::ostream& STRwyj, const LZespolona& LZ );
 std::istream& operator >> (std::istream& STRwej, LZespolona& LZ );
-// std::istream& operator >> (std::ifstream& const Danezpliku, LZespolona& LZ );
 
-/*
- * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
- *
-
-bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);
-
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator / (LZespolona  Skl1,  double  Skl2);
-LZespolona  operator / (LZespolona  Skl1,  LZespolona Skl2);
-LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
-
-std::ostream& operator << (std::ostream& STRwyj, LZespolona& LZ );
-std::istream& operator >> (std::istream& STRwej, LZespolona& LZ );
-
-LZespolona sprzezenie(LZespolona  Skl1);
-
-void wczytajLZ(LZespolona  Skl1);
-double modul(LZespolona Skl1);
-void Sprawdzznak(std::istream &STRwej, char znak);
-
-*/
 
 #endif

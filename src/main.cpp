@@ -41,7 +41,7 @@ int main(int argc, char **argv)
   }
 
 
-  while (BazaT.pobierzpytanie()) {
+  while (BazaT.pobierzpytanie()) {               // Pobieranie kolejnych pytań testowych z pliku
     int i = 4;
     
     std::cout << ":? Podaj wynik operacji: ";
